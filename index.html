@@ -26,12 +26,14 @@
       display: block;
       width: 100%;
       max-width: 600px;
-      /* Збільшуємо тривалість до 1.5 сек для максимальної плавності */
-      transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+      /* Додаємо плавний перехід для прозорості та масштабу */
+      transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
       text-shadow: 0 0 20px rgba(255, 209, 102, 0.3);
+      /* Початковий стан масштабу */
       transform: scale(1);
     }
 
+    /* Другий рядок завжди починається з нового */
     .second-line {
       display: block;
       margin-top: 10px;
@@ -78,25 +80,26 @@
     const greetingDiv = document.getElementById("greeting");
 
     function updateGreeting() {
-      // Зникання: масштаб зменшується трохи делікатніше (0.9)
+      // Зникання: текст зменшується (scale 0.85) і стає прозорим
       greetingDiv.style.opacity = 0;
-      greetingDiv.style.transform = "scale(0.9)";
+      greetingDiv.style.transform = "scale(0.85)";
       
-      // Чекаємо 1.5 секунди (1500 мс), щоб анімація повністю завершилася
       setTimeout(() => {
+        // Вибираємо рандомну фразу
         const rawText = otherGreetings[Math.floor(Math.random() * otherGreetings.length)];
         
+        // Розбиваємо на два рядки
         const parts = rawText.split('|');
         greetingDiv.innerHTML = `${parts[0]}<span class="second-line">${parts[1]}</span>`;
         
-        // Поява: масштаб повертається до 1
+        // Поява: текст збільшується до нормального розміру (scale 1)
         greetingDiv.style.opacity = 1;
         greetingDiv.style.transform = "scale(1)";
-      }, 1500); 
+      }, 800); // Чекаємо 0.8 секунди, поки завершиться зникання
     }
 
-    // Збільшено інтервал до 5 секунд для комфортнішого читання
-    setInterval(updateGreeting, 5000);
+    // Запускаємо зміну кожні 4 секунди
+    setInterval(updateGreeting, 4000);
   </script>
 </body>
 </html>
