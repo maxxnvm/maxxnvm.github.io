@@ -1,20 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="uk">
 <head>
-  <title>Привітики Аня 😊</title>
+  <meta charset="UTF-8">
+  <title>Привітання для Ані</title>
   <style>
     body {
-      margin: 0;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      font-size: 80px;
-      font-family: Arial, sans-serif;
+      background: radial-gradient(circle, #2c3e50 0%, #000000 100%);
+      color: #f1c40f; /* Золотистий колір для нічного настрою */
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 2.2em;
+      text-align: center;
+      margin: 0;
+      overflow: hidden;
+    }
+    #greeting {
+      padding: 20px;
+      transition: all 0.8s ease-in-out;
+      text-shadow: 0 0 15px rgba(241, 196, 15, 0.5);
     }
   </style>
 </head>
 <body>
-  Аня
+
+  <div id="greeting">Надобраніч Анюся, солодких тобі снів!</div>
+
+  <script>
+    const greetings = [
+      "Надобраніч Анюся, солодких тобі снів!",      // Українська
+      "Good night Anya, sweet dreams!",             // Англійська
+      "Bonne nuit Anya, fais de beaux rêves!",      // Французька
+      "Buenas noches Anya, dulces sueños!",         // Іспанська
+      "Gute Nacht Anya, süße Träume!",              // Німецька
+      "Buona notte Anya, sogni d'oro!",             // Італійська
+      "Boa noite Anya, sonhos doces!",              // Португальська
+      "Dobranoc Aniu, kolorowych snów!",            // Польська
+      "God natt Anya, dröm sött!",                  // Шведська
+      "İyi geceler Anya, tatlı rüyalar!",           // Турецька
+      "안녕히 주무세요 Anya, 좋은 꿈 꾸세요!",          // Корейська
+      "晚安 Anya，祝你做個好夢！",                    // Китайська
+      "おやすみなさい Anya, 良い夢を！",               // Японська
+      "Goedenacht Anya, slaap lekker!",             // Нідерландська
+      "God nat Anya, sov godt!",                    // Данська
+      "Góða nótt Anya, dreymi þig vel!",            // Ісландська
+      "Hyvää yötä Anya, kauniita unia!",            // Фінська
+      "Kala nyhta Anya, onira glika!",              // Грецька
+      "शुभ रात्रि Anya, अच्छे सपने देखना!",              // Гінді
+      "Laila tayyiba Anya, ahlam sa'ida!",          // Арабська (трансліт)
+      "Noapte bună Anya, vise plăcute!",            // Румунська
+      "Jó éjszakát Anya, szép álmokat!",            // Угорська
+      "Sugeng dalu Anya, mimpi indah!",             // Яванська
+      "Laku noć Anya, sanjaj lepe snove!"           // Сербська/Хорватська
+    ];
+
+    let index = 1;
+    const greetingDiv = document.getElementById("greeting");
+
+    setInterval(() => {
+      greetingDiv.style.opacity = 0;
+      greetingDiv.style.transform = "scale(0.95)";
+      
+      setTimeout(() => {
+        greetingDiv.textContent = greetings[index];
+        greetingDiv.style.opacity = 1;
+        greetingDiv.style.transform = "scale(1)";
+        index = (index + 1) % greetings.length;
+      }, 800); 
+
+    }, 4000); 
+  </script>
 </body>
 </html>
