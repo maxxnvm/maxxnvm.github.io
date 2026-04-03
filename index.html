@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Добраніч</title>
+  <title>Привітання для Ані</title>
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap" rel="stylesheet">
   <style>
     body {
@@ -26,14 +26,12 @@
       display: block;
       width: 100%;
       max-width: 600px;
-      /* Додаємо плавний перехід для прозорості та масштабу */
-      transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+      /* Збільшуємо тривалість до 1.5 сек для максимальної плавності */
+      transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
       text-shadow: 0 0 20px rgba(255, 209, 102, 0.3);
-      /* Початковий стан масштабу */
       transform: scale(1);
     }
 
-    /* Другий рядок завжди починається з нового */
     .second-line {
       display: block;
       margin-top: 10px;
@@ -80,26 +78,25 @@
     const greetingDiv = document.getElementById("greeting");
 
     function updateGreeting() {
-      // Зникання: текст зменшується (scale 0.85) і стає прозорим
+      // Зникання: масштаб зменшується трохи делікатніше (0.9)
       greetingDiv.style.opacity = 0;
-      greetingDiv.style.transform = "scale(0.85)";
+      greetingDiv.style.transform = "scale(0.9)";
       
+      // Чекаємо 1.5 секунди (1500 мс), щоб анімація повністю завершилася
       setTimeout(() => {
-        // Вибираємо рандомну фразу
         const rawText = otherGreetings[Math.floor(Math.random() * otherGreetings.length)];
         
-        // Розбиваємо на два рядки
         const parts = rawText.split('|');
         greetingDiv.innerHTML = `${parts[0]}<span class="second-line">${parts[1]}</span>`;
         
-        // Поява: текст збільшується до нормального розміру (scale 1)
+        // Поява: масштаб повертається до 1
         greetingDiv.style.opacity = 1;
         greetingDiv.style.transform = "scale(1)";
-      }, 800); // Чекаємо 0.8 секунди, поки завершиться зникання
+      }, 1500); 
     }
 
-    // Запускаємо зміну кожні 4 секунди
-    setInterval(updateGreeting, 4000);
+    // Збільшено інтервал до 5 секунд для комфортнішого читання
+    setInterval(updateGreeting, 5000);
   </script>
 </body>
 </html>
