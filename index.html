@@ -2,39 +2,78 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Привітання для Ані</title>
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap" rel="stylesheet">
   <style>
     body {
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background: radial-gradient(circle at center, #1b2735 0%, #090a0f 100%);
-      color: #ffd166; 
-      font-family: 'Comfortaa', cursive;
+      background: radial-gradient(circle, #2c3e50 0%, #000000 100%);
+      color: #f1c40f; /* Золотистий колір для нічного настрою */
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 2.2em;
+      text-align: center;
       margin: 0;
       overflow: hidden;
     }
-
     #greeting {
-      font-size: clamp(1.5rem, 8vw, 2.5rem); /* Адаптивний розмір шрифту */
-      line-height: 1.4;
-      text-align: center;
-      padding: 0 20px;
-      max-width: 400px; /* Обмежуємо ширину для переносу на телефонах */
+      padding: 20px;
       transition: all 0.8s ease-in-out;
-      text-shadow: 0 0 20px rgba(255, 209, 102, 0.4);
+      text-shadow: 0 0 15px rgba(241, 196, 15, 0.5);
     }
   </style>
 </head>
 <body>
 
-  <div id="greeting">Надобраніч Анюся,<br>солодких тобі снів!</div>
+  <div id="greeting">Надобраніч Анюся, солодких тобі снів!</div>
 
   <script>
-    // Масив з тими ж мовами (без російської), адаптований під структуру з переносом
+    const greetings = [
+      "Надобраніч Анюся, солодких тобі снів!",      // Українська
+      "Good night Anya, sweet dreams!",             // Англійська
+      "Bonne nuit Anya, fais de beaux rêves!",      // Французька
+      "Buenas noches Anya, dulces sueños!",         // Іспанська
+      "Gute Nacht Anya, süße Träume!",              // Німецька
+      "Buona notte Anya, sogni d'oro!",             // Італійська
+      "Boa noite Anya, sonhos doces!",              // Португальська
+      "Dobranoc Aniu, kolorowych snów!",            // Польська
+      "God natt Anya, dröm sött!",                  // Шведська
+      "İyi geceler Anya, tatlı rüyalar!",           // Турецька
+      "안녕히 주무세요 Anya, 좋은 꿈 꾸세요!",          // Корейська
+      "晚安 Anya，祝你做個好夢！",                    // Китайська
+      "おやすみなさい Anya, 良い夢を！",               // Японська
+      "Goedenacht Anya, slaap lekker!",             // Нідерландська
+      "God nat Anya, sov godt!",                    // Данська
+      "Góða nótt Anya, dreymi þig vel!",            // Ісландська
+      "Hyvää yötä Anya, kauniita unia!",            // Фінська
+      "Kala nyhta Anya, onira glika!",              // Грецька
+      "शुभ रात्रि Anya, अच्छे सपने देखना!",              // Гінді
+      "Laila tayyiba Anya, ahlam sa'ida!",          // Арабська (трансліт)
+      "Noapte bună Anya, vise plăcute!",            // Румунська
+      "Jó éjszakát Anya, szép álmokat!",            // Угорська
+      "Sugeng dalu Anya, mimpi indah!",             // Яванська
+      "Laku noć Anya, sanjaj lepe snove!"           // Сербська/Хорватська
+    ];
+
+    let index = 1;
+    const greetingDiv = document.getElementById("greeting");
+
+    setInterval(() => {
+      greetingDiv.style.opacity = 0;
+      greetingDiv.style.transform = "scale(0.95)";
+      
+      setTimeout(() => {
+        greetingDiv.textContent = greetings[index];
+        greetingDiv.style.opacity = 1;
+        greetingDiv.style.transform = "scale(1)";
+        index = (index + 1) % greetings.length;
+      }, 800); 
+
+    }, 4000); 
+  </script>
+</body>
+</html>    // Масив з тими ж мовами (без російської), адаптований під структуру з переносом
     const greetings = [
       "Надобраніч Анюся, солодких тобі снів!",
       "Good night Anya, sweet dreams!",
