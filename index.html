@@ -3,38 +3,89 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Для Ані</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+  <title>Привітання для Ані</title>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap" rel="stylesheet">
   <style>
     body {
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background: radial-gradient(circle at center, #1a1a2e 0%, #020205 100%);
-      color: #fff;
-      font-family: 'Montserrat', sans-serif;
+      background: radial-gradient(circle at center, #1b2735 0%, #090a0f 100%);
+      color: #ffd166; 
+      font-family: 'Comfortaa', cursive;
       margin: 0;
       overflow: hidden;
-      text-align: center;
     }
 
     #greeting {
-      font-size: 8vw; /* Розмір адаптується під ширину екрана */
+      font-size: clamp(1.5rem, 8vw, 2.5rem); /* Адаптивний розмір шрифту */
       line-height: 1.4;
+      text-align: center;
+      padding: 0 20px;
+      max-width: 400px; /* Обмежуємо ширину для переносу на телефонах */
       transition: all 0.8s ease-in-out;
-      padding: 20px;
-      font-weight: 300;
+      text-shadow: 0 0 20px rgba(255, 209, 102, 0.4);
     }
+  </style>
+</head>
+<body>
 
-    /* Стиль для імені та першої фрази */
-    .highlight {
-      display: block;
-      font-weight: 600;
-      color: #f1c40f;
-      margin-bottom: 10px;
-    }
+  <div id="greeting">Надобраніч Анюся,<br>солодких тобі снів!</div>
 
+  <script>
+    // Масив з тими ж мовами (без російської), адаптований під структуру з переносом
+    const greetings = [
+      "Надобраніч Анюся, солодких тобі снів!",
+      "Good night Anya, sweet dreams!",
+      "Bonne nuit Anya, fais de beaux rêves!",
+      "Buenas noches Anya, dulces sueños!",
+      "Gute Nacht Anya, süße Träume!",
+      "Buona notte Anya, sogni d'oro!",
+      "Boa noite Anya, sonhos doces!",
+      "Dobranoc Aniu, kolorowych snów!",
+      "God natt Anya, dröm sött!",
+      "İyi geceler Anya, tatlı rüyalar!",
+      "안녕히 주му세요 Anya, 좋은 꿈 꾸세요!",
+      "晚安 Anya，祝你做個好夢！",
+      "おやすみなさい Anya, 良い夢を！",
+      "Goedenacht Anya, slaap lekker!",
+      "God nat Anya, sov godt!",
+      "Góða nótt Anya, dreymi þig vel!",
+      "Hyvää yötä Anya, kauniita unia!",
+      "Kala nyhta Anya, onira glika!",
+      "शुभ रात्रि Anya, अच्छे सपने देखना!",
+      "Laila tayyiba Anya, ahlam sa'ida!",
+      "Noapte bună Anya, vise plăcute!",
+      "Jó éjszakát Anya, szép álmokat!",
+      "Sugeng dalu Anya, mimpi indah!",
+      "Laku noć Anya, sanjaj lepe snove!"
+    ];
+
+    let index = 1;
+    const greetingDiv = document.getElementById("greeting");
+
+    setInterval(() => {
+      greetingDiv.style.opacity = 0;
+      greetingDiv.style.transform = "translateY(10px)";
+      
+      setTimeout(() => {
+        // Замінюємо кому з пробілом на кому з переносом рядка для кращого вигляду на мобільних
+        let text = greetings[index];
+        if (text.includes(',')) {
+            text = text.replace(', ', ',<br>');
+        }
+
+        greetingDiv.innerHTML = text;
+        greetingDiv.style.opacity = 1;
+        greetingDiv.style.transform = "translateY(0)";
+        index = (index + 1) % greetings.length;
+      }, 800); 
+
+    }, 4000); 
+  </script>
+</body>
+</html>
     /* Стиль для другої фрази */
     .sub-text {
       display: block;
