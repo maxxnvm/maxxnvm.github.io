@@ -19,13 +19,13 @@
     }
 
     #greeting {
-      font-size: clamp(1.5rem, 8vw, 2.5rem); /* Адаптивний розмір шрифту */
-      line-height: 1.4;
+      font-size: clamp(1.5rem, 8vw, 2.5rem);
+      line-height: 1.5;
       text-align: center;
-      padding: 0 20px;
-      max-width: 400px; /* Обмежуємо ширину для переносу на телефонах */
+      padding: 0 30px;
+      max-width: 500px;
       transition: all 0.8s ease-in-out;
-      text-shadow: 0 0 20px rgba(255, 209, 102, 0.4);
+      text-shadow: 0 0 25px rgba(255, 209, 102, 0.4);
     }
   </style>
 </head>
@@ -34,55 +34,73 @@
   <div id="greeting">Надобраніч Анюся,<br>солодких тобі снів!</div>
 
   <script>
-    // Масив з тими ж мовами (без російської), адаптований під структуру з переносом
-    const greetings = [
-      "Надобраніч Анюся, солодких тобі снів!",
-      "Good night Anya, sweet dreams!",
-      "Bonne nuit Anya, fais de beaux rêves!",
-      "Buenas noches Anya, dulces sueños!",
-      "Gute Nacht Anya, süße Träume!",
-      "Buona notte Anya, sogni d'oro!",
-      "Boa noite Anya, sonhos doces!",
-      "Dobranoc Aniu, kolorowych snów!",
-      "God natt Anya, dröm sött!",
-      "İyi geceler Anya, tatlı rüyalar!",
-      "안녕히 주му세요 Anya, 좋은 꿈 꾸세요!",
-      "晚安 Anya，祝你做個好夢！",
-      "おやすみなさい Anya, 良い夢を！",
-      "Goedenacht Anya, slaap lekker!",
-      "God nat Anya, sov godt!",
-      "Góða nótt Anya, dreymi þig vel!",
-      "Hyvää yötä Anya, kauniita unia!",
-      "Kala nyhta Anya, onira glika!",
-      "शुभ रात्रि Anya, अच्छे सपने देखना!",
-      "Laila tayyiba Anya, ahlam sa'ida!",
-      "Noapte bună Anya, vise plăcute!",
-      "Jó éjszakát Anya, szép álmokat!",
-      "Sugeng dalu Anya, mimpi indah!",
-      "Laku noć Anya, sanjaj lepe snove!"
+    const ukrainianGreeting = "Надобраніч Анюся, солодких тобі снів!";
+    
+    const otherGreetings = [
+      "Good night Anya, sweet dreams!",             // Англійська
+      "Bonne nuit Anya, fais de beaux rêves!",      // Французька
+      "Buenas noches Anya, dulces sueños!",         // Іспанська
+      "Gute Nacht Anya, süße Träume!",              // Німецька
+      "Buona notte Anya, sogni d'oro!",             // Італійська
+      "Boa noite Anya, sonhos doces!",              // Португальська
+      "Dobranoc Aniu, kolorowych snów!",            // Польська
+      "God natt Anya, dröm sött!",                  // Шведська
+      "İyi geceler Anya, tatlı rüyalar!",           // Турецька
+      "안녕히 주무세요 Anya, 좋은 꿈 꾸세요!",          // Корейська
+      "晚安 Anya，祝你做個好夢！",                    // Китайська
+      "おやすみなさい Anya, 良い夢を！",               // Японська
+      "Goedenacht Anya, slaap lekker!",             // Нідерландська
+      "God nat Anya, sov godt!",                    // Данська
+      "Góða nótt Anya, dreymi þig vel!",            // Ісландська
+      "Hyvää yötä Anya, kauniita unia!",            // Фінська
+      "Kala nyhta Anya, onira glika!",              // Грецька
+      "शुभ रात्रि Anya, अच्छे सपने देखना!",              // Гінді
+      "Laila tayyiba Anya, ahlam sa'ida!",          // Арабська
+      "Noapte bună Anya, vise plăcute!",            // Румунська
+      "Jó éjszakát Anya, szép álmokat!",            // Угорська
+      "Laku noć Anya, sanjaj lepe snove!",          // Хорватська
+      "Sugeng dalu Anya, mimpi indah!",             // Яванська
+      "Maayong gabii Anya, tam-is nga dila!",       // Себуанська
+      "Oíche mhaith Anya, codladh sámh!",           // Ірландська
+      "Usiku mwema Anya, ndoto tamu!",              // Суахілі
+      "Gofraidh nocht Anya, cadladh go maith!",     // Шотландська
+      "Gudnat Anya, sov evel!",                     // Норвезька
+      "Hamba kahle Anya, lala kahle!"               // Зулу
     ];
 
-    let index = 1;
     const greetingDiv = document.getElementById("greeting");
+    let isFirst = true;
 
-    setInterval(() => {
+    function updateGreeting() {
       greetingDiv.style.opacity = 0;
-      greetingDiv.style.transform = "translateY(10px)";
+      greetingDiv.style.transform = "scale(0.9)";
       
       setTimeout(() => {
-        // Замінюємо кому з пробілом на кому з переносом рядка для кращого вигляду на мобільних
-        let text = greetings[index];
+        let text;
+        
+        if (isFirst) {
+          // Якщо це перша зміна після завантаження, ставимо українську (хоча вона вже там є, це для циклу)
+          // Але за логікою "перша українська, далі рандом", ми просто перемикаємо прапорець
+          isFirst = false;
+          text = otherGreetings[Math.floor(Math.random() * otherGreetings.length)];
+        } else {
+          // Випадкова мова зі списку
+          text = otherGreetings[Math.floor(Math.random() * otherGreetings.length)];
+        }
+
+        // Автоматичний перенос після коми для краси на мобільних
         if (text.includes(',')) {
-            text = text.replace(', ', ',<br>');
+          text = text.replace(', ', ',<br>');
         }
 
         greetingDiv.innerHTML = text;
         greetingDiv.style.opacity = 1;
-        greetingDiv.style.transform = "translateY(0)";
-        index = (index + 1) % greetings.length;
-      }, 800); 
+        greetingDiv.style.transform = "scale(1)";
+      }, 800);
+    }
 
-    }, 4000); 
+    // Запускаємо цикл через 4 секунди після завантаження сторінки
+    setInterval(updateGreeting, 4000);
   </script>
 </body>
 </html>
